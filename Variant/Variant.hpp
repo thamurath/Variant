@@ -10,12 +10,13 @@
 
 
 #include <Common/DataTypes.hpp>
-#include "VariantTypeFactory.hpp"
+#include "src/VariantTypeFactory.hpp"
 
 ///@todo Copy constructor, assigment operator default constructor ...and maybe convert VariantTypeFactory into a manager
 class Variant
 {
 public:
+
 
   template <typename T>
   Variant(const T& ai_value)
