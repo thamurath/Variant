@@ -35,7 +35,7 @@ namespace Utilities
 #define IS_VISITABLE()                                                  \
 virtual size_t Tag(void) const                                          \
 {                                                                       \
-  return Utilities::DesignPatterns::CooperativeVisitor::GetTagHelper(this); \
+  return Utilities::DesignPatterns::CooperativeVisitor::Visitable::GetTagHelper(this); \
 }
 
 #endif // VISITABLE_H
