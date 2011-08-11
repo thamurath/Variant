@@ -1,55 +1,64 @@
-#ifndef __UTILITIES_DESIGNPATTERNS_COOPERATIVEVISITOR_INTERNAL_TAGS_HPP__
-#define __UTILITIES_DESIGNPATTERNS_COOPERATIVEVISITOR_INTERNAL_TAGS_HPP__
+#ifndef __COMMON_BASE_INTERNAL_TAGS_HPP__
+#define __COMMON_BASE_INTERNAL_TAGS_HPP__
 
 #include <cstdlib>
 #include <iostream>
 #include <typeinfo>
 
 
-namespace Utilities
+
+/**
+ * @brief Utility to get a unique number for each of the classes in a hierachy
+ *
+ * For an example of use @see the Visitable class in CooperativeVisitor Library
+ *
+ * @todo Change all this file to set the internal namespace in another header and
+ * the variable definitions in a source file if possible
+ **/
+namespace Base
 {
-  namespace DesignPatterns
+  namespace internal
   {
-    namespace CooperativeVisitor
+    template<typename Base>
+    struct TagCounter
     {
-      namespace internal
-      {
-        template<typename Base>
-        struct TagCounter
-        {
-          static size_t s_counter;
-        };
+      static size_t s_counter;
+    };
 
-        template<typename Base>
-        size_t TagCounter<Base>::s_counter = 0;
+    template<typename Base>
+    size_t TagCounter<Base>::s_counter = 0;
 
 
-        template <typename Visitable, typename Base>
-        struct TagHolder
-        {
-          static size_t s_tag;
-        };
+    template <typename Derived, typename Base>
+    struct TagHolder
+    {
+      static size_t s_tag;
+    };
 
+  }
 
-        template <typename Visitable,typename Base>
-        size_t GetTag(void)
-        {
-          // std::cout << "GetTag<" << typeid(Visitable).name() <<","
-          //           << typeid(Base).name() <<">" << std::endl;
-          size_t& tag = TagHolder<const Visitable,const Base>::s_tag;
-          if ( 0 == tag)
-          {
-            tag = ++TagCounter<const Base>::s_counter;
-          }
-          return tag;
-        }
-
-        template<typename Visitable, typename Base>
-        size_t TagHolder<Visitable,Base>::s_tag = GetTag<Visitable,Base>();
-      }
+  template <typename Derived,typename Base>
+  size_t GetTag(void)
+  {
+    // std::cout << "GetTag<" << typeid(Derived).name() <<","
+    //           << typeid(Base).name() <<">" << std::endl;
+    size_t& tag = internal::TagHolder<const Derived,const Base>::s_tag;
+    if ( 0 == tag)
+    {
+      tag = ++(internal::TagCounter<const Base>::s_counter);
     }
+    return tag;
+  }
+
+
+  namespace internal
+  {
+    template<typename Derived, typename Base>
+    size_t TagHolder<Derived,Base>::s_tag = GetTag<Derived,Base>();
   }
 }
 
 
-#endif //__UTILITIES_DESIGNPATTERNS_COOPERATIVEVISITOR_INTERNAL_TAGS_HPP__
+
+f
+#endif //__COMMON_INTERNAL_TAGS_HPP__

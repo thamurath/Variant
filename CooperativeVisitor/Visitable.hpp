@@ -1,7 +1,7 @@
 #ifndef VISITABLE_H
 #define VISITABLE_H
 
-#include "src/Tags.hpp"
+#include <Common/Tags.hpp>
 
 
 namespace Utilities
@@ -21,7 +21,7 @@ namespace Utilities
         template < typename VisitableType>
         static size_t GetTagHelper(const VisitableType*)
         {
-          return internal::GetTag<VisitableType,Base>();
+          return ::Base::GetTag<VisitableType,Base>();
         }
       private:
 	Visitable(const Visitable& rhs);
