@@ -41,6 +41,7 @@
 		</Compiler>
 		<Unit filename="../Variant.hpp" />
 		<Unit filename="../VariantExceptions.hpp" />
+		<Unit filename="../src/Variant.cpp" />
 		<Unit filename="../src/VariantIntegralType.hpp" />
 		<Unit filename="../src/VariantTypeBase.hpp" />
 		<Unit filename="../src/VariantTypeFactory.hpp" />

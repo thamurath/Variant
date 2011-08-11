@@ -15,8 +15,8 @@ namespace Utilities
       class Visitable
       {
       public:
-	Visitable(void){}
-	virtual ~Visitable(void){}
+        Visitable(void){}
+        virtual ~Visitable(void){}
 
         template < typename VisitableType>
         static size_t GetTagHelper(const VisitableType*)
@@ -24,7 +24,7 @@ namespace Utilities
           return internal::GetTag<VisitableType,Base>();
         }
       private:
-	Visitable(const Visitable& rhs);
+        Visitable(const Visitable& rhs);
         Visitable& operator=(const Visitable& rhs);
       };
     }

@@ -12,42 +12,49 @@
 #include <Common/DataTypes.hpp>
 #include "src/VariantTypeFactory.hpp"
 
-///@todo Copy constructor, assigment operator default constructor ...
-///and maybe convert VariantTypeFactory into a manager
-class Variant
+namespace Utilities
 {
-public:
-
-
-  template <typename T>
-  Variant(const T& ai_value)
+  //Forward declaration
+  namespace internal
   {
-    m_value = VariantTypeFactory::Create(ai_value);
+    class VariantTypeBase;
   }
 
 
-  template<typename V>
-  ResultCode_t getValue(V& ao_value)
+  ///@todo Copy constructor, assigment operator default constructor ...
+  ///and maybe convert VariantTypeFactory into a manager
+  class Variant
   {
-    ///@todo almost everything to be done. Update with Cooperative Visitor
-    ConvertVisitor* v = VariantTypeFactory::CreateVisitor(ao_value);
-    if ( 0 != v)
+  public:
+
+
+    template <typename T>
+    Variant(const T& ai_value)
     {
-      m_value->AcceptVisitor(*v);
+      m_value = VariantTypeFactory::Create(ai_value);
     }
-    return FAILURE;
-  }
+    virtual ~Variant(void);
+
+    template<typename V>
+    ResultCode_t getValue(V& ao_value)
+    {
+      ///@todo almost everything to be done. Update with Cooperative Visitor
+      ConvertVisitor* v = VariantTypeFactory::CreateVisitor(ao_value);
+      if ( 0 != v)
+      {
+        m_value->AcceptVisitor(*v);
+      }
+      return FAILURE;
+    }
 
 
-  virtual ~Variant(void)
-  {
-    delete m_value;
-    m_value = 0;
-  }
-private:
 
-  VariantType* m_value;
-};
+
+  private:
+
+    internal::VariantType* m_value;
+  };
+}
 
 
 #endif /* VARIANT_HPP_ */
