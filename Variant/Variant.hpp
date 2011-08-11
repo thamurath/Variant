@@ -12,7 +12,8 @@
 #include <Common/DataTypes.hpp>
 #include "src/VariantTypeFactory.hpp"
 
-///@todo Copy constructor, assigment operator default constructor ...and maybe convert VariantTypeFactory into a manager
+///@todo Copy constructor, assigment operator default constructor ...
+///and maybe convert VariantTypeFactory into a manager
 class Variant
 {
 public:
