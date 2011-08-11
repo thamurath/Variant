@@ -3,6 +3,7 @@
 
 
 #include "VariantTypeBase.hpp"
+
 namespace Utilities
 {
   namespace Variant
@@ -17,6 +18,8 @@ namespace Utilities
 
         int8_t GetValue(void) const;
         void SetValue(const int8_t& ai_value);
+
+        IS_VISITABLE();
 
       private:
         int8_t m_value;

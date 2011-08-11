@@ -18,6 +18,8 @@ namespace Utilities
         int16_t GetValue(void) const;
         void SetValue(const int16_t& ai_value);
 
+        IS_VISITABLE();
+
       private:
         int16_t m_value;
       };

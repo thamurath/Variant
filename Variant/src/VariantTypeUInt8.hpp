@@ -18,6 +18,9 @@ namespace Utilities
         uint8_t GetValue(void) const;
         void SetValue(const uint8_t& ai_value);
 
+
+        IS_VISITABLE();
+
       private:
         uint8_t m_value;
       };

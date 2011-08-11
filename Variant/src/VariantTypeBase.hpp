@@ -18,6 +18,8 @@ namespace Utilities
         VariantTypeBase(){}
         virtual ~VariantTypeBase(){}
 
+        IS_VISITABLE();
+
       };
     }
   }

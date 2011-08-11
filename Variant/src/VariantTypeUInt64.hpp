@@ -18,6 +18,10 @@ namespace Utilities
         uint64_t GetValue(void) const;
         void SetValue(const uint64_t& ai_value);
 
+
+
+        IS_VISITABLE();
+
       private:
         uint64_t m_value;
       };
