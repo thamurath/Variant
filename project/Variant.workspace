@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Variant">
+		<Project filename="../TypeLists/project/TypeLists.cbp" />
+		<Project filename="../Common/project/Common.cbp" />
+		<Project filename="../Variant/project/Variant.cbp" />
+		<Project filename="../CompileTimeTools/project/CompileTimeTools.cbp" />
+		<Project filename="../StringUtilities/project/StringUtilities.cbp" />
+		<Project filename="../CooperativeVisitor/project/CooperativeVisitor.cbp" active="1" />
+	</Workspace>
+</CodeBlocks_workspace_file>
