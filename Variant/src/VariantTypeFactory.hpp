@@ -10,21 +10,86 @@
 
 #include <cstdio>
 
+
+///@todo change this factory to a manager and make it a Singleton
 class VariantTypeFactory
 {
+  typedef TYPELIST_2(uint8_t,uint32_t) ConvertibleTypes;
 public:
+
+  static VariantTypeFactory& GetInstance(void)
+  {
+    if (nullptr == s_instance)
+    {
+      s_instance = new VariantTypeFactory();
+    }
+
+    return *s_instance;
+  }
+
   template<typename CreateType>
-  static VariantType* Create(const CreateType& ai_value)
+  VariantType* Create(const CreateType& ai_value)
   {
     return Create(ai_value,Type2Type<CreateType>());
   }
 
   template<typename ToType>
-  static ConvertVisitor* CreateVisitor(ToType& ao_value)
+  ConvertVisitor& GetVisitor(ToType& ao_value)
   {
-    return CreateVisitor(ao_value,Type2Type<ToType>());
+    //First seach an internal cache
+    static const size_t index(TypeLists::IndexOf<ConvertibleTypes,ToType>::value);
+    if (-1 == index)
+    {
+      throw NonConvertibleTypeError();
+    }
+
+
+    ConvertVisitor* visitor(Base::nullptr);
+    VisitorPool_t::iterator ite (m_cache.find(index));
+    if (m_cahe.end() != ite)
+    {
+      visitor = ite->second;
+    }
+    else
+    {
+      //If there is no visitor of that type in the internal cache, create it
+      visitor =  CreateVisitor(ao_value,Type2Type<ToType>());
+      if ( nullptr == visitor)
+      {
+        thow UnableToCreateVisitor();
+      }
+
+      //and the insert it in the cache for future conversions
+      m_chache.insert(std::make_pair(index,visitor));
+    }
+    return *visitor;
   }
+protected:
+
+  ~VariantTypeFactory(void)
+  {
+    struct Deleter
+    {
+      template<typename T>
+      void operator()(T* ai_pointer) const
+      {
+        delete ai_pointer;
+        ai_pointer = Base::nullptr;
+      }
+    };
+
+    std::for_each(m_cache.begin(),m_cache.end(),Deleter());
+  }
+
 private:
+
+  ///@todo usar std::auto_ptr<> para que se elimine cuando se destruya el objeto
+  static VariantTypeFactory* s_instance;
+
+  typedef std::map<size_t,ConvertVisitor*> VistorPool_t;
+
+  VisitorPool_t m_cache;
+
   template<typename T>
   struct Type2Type
   {
