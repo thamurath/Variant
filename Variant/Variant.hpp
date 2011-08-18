@@ -20,14 +20,11 @@ namespace Utilities
     class VariantTypeBase;
   }
 
-
   ///@todo Copy constructor, assigment operator default constructor ...
   ///and maybe convert VariantTypeFactory into a manager
   class Variant
   {
   public:
-
-
     template <typename T>
     Variant(const T& ai_value)
     {
@@ -46,15 +43,9 @@ namespace Utilities
       }
       return FAILURE;
     }
-
-
-
-
   private:
-
     internal::VariantType* m_value;
   };
 }
-
-
 #endif /* VARIANT_HPP_ */
+
