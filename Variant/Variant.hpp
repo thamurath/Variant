@@ -28,20 +28,17 @@ namespace Utilities
     template <typename T>
     Variant(const T& ai_value)
     {
-      m_value = VariantTypeFactory::Create(ai_value);
+      m_value = internal::VariantTypeFactory::Create(ai_value);
     }
     virtual ~Variant(void);
 
     template<typename V>
     ResultCode_t getValue(V& ao_value)
     {
-      ///@todo almost everything to be done. Update with Cooperative Visitor
-      ConvertVisitor* v = VariantTypeFactory::CreateVisitor(ao_value);
-      if ( 0 != v)
-      {
-        m_value->AcceptVisitor(*v);
-      }
-      return FAILURE;
+      ///@todo This way is not the correct one to call the coop visitor
+      m_value->AcceptVisitor(internal::VariantTypeFactory::GetVisitor(ao_value));
+
+      return SUCCESS;
     }
   private:
     internal::VariantType* m_value;
