@@ -18,8 +18,22 @@ namespace Utilities
         VariantTypeBase(){}
         virtual ~VariantTypeBase(){}
 
+        //Clone-idiom to allow polymofphic copy construction.
+        virtual VariantTypeBase* Clone(void) = 0;
+
         IS_VISITABLE();
 
+      };
+
+      template <typename Derived>
+      class VariantTypeBaseClonable : public VariantTypeBase
+      {
+      public:
+        virtual VariantTypeBase* Clone(void)
+        {
+          // Call copy constructor
+          return new Derived(static_cast<Derived const&>(*this));
+        }
       };
     }
   }

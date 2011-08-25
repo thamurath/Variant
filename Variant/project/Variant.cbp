@@ -54,7 +54,9 @@
 		<Unit filename="..\src\VariantTypeInt64.hpp" />
 		<Unit filename="..\src\VariantTypeInt8.hpp" />
 		<Unit filename="..\src\VariantTypeUInt16.hpp" />
+		<Unit filename="..\src\VariantTypeUInt32.cpp" />
 		<Unit filename="..\src\VariantTypeUInt32.hpp" />
+		<Unit filename="..\src\VariantTypeUInt64.cpp" />
 		<Unit filename="..\src\VariantTypeUInt64.hpp" />
 		<Unit filename="..\src\VariantTypeUInt8.hpp" />
 		<Extensions>

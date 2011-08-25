@@ -9,7 +9,7 @@ namespace Utilities
     namespce internal
     {
       template <typename T>
-      class VariantIntegralType : public VariantTypeBase
+      class VariantIntegralType : public VariantTypeBaseClonable
       {
       public:
         VariantIntegralType(const T& ai_value=T());

@@ -10,11 +10,13 @@ namespace Utilities
   {
     namespace internal
     {
-      class VariantTypeInt8 : public VariantTypeBase
+      class VariantTypeInt8 : public VariantTypeBaseClonable
       {
       public:
         VariantTypeInt8(const int8_t& ai_value=0);
         virtual ~VariantTypeInt8(void);
+
+        VariantTypeInt8(VariantTypeInt8 const& ai_rhs);
 
         int8_t GetValue(void) const;
         void SetValue(const int8_t& ai_value);
