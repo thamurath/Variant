@@ -1,0 +1,277 @@
+#------
+#Final binary name ( note that in debug mode a 'D' is appended )
+PROGRAM_NAME = EricssonDNS
+
+#Files to exclude from application(by default all source files in source directories will be compiled)
+BLACK_LIST = Thread.cpp
+
+#Binary local directory
+BIN_DIR = ../bin
+#Source directory and files
+SRC_DIR = ../src ../tools/src
+
+
+
+
+#Compiler and linker flags common to all modes
+COMMON_CFLAGS =  -Wall -fexceptions -funsigned-char -D_THREAD_SAFE -D_REENTRANT
+COMMON_LDFLAGS = 
+
+#System libraries to link with. Thet have to be on LD_LIBRARY_PATH
+SYS_LIBS = -lpthread -lstdc++
+
+#Header search path common to all modes.
+COMMON_INCLUDE_PATH=-I.. -I../tools -I../thirdpart
+
+#Application libraries to link with in all modes
+#COMMON_LIBS= -L../thirdpart/poslib/server/.libs -lposserver -L../thirdpart/poslib/.libs -lposlib
+COMMON_LIBS= ../thirdpart/poslib/server/.libs/libposserver.a ../thirdpart/poslib/.libs/libposlib.a
+
+###############################################################
+###                                                         ###
+###	MODE = DEBUG                                        ###
+###                                                         ###
+###############################################################
+
+DEBUG_PROGRAM = $(addsuffix $(DEBUG_EXTENSION),$(PROGRAM_NAME))
+#Compiler and linker flags for DEBUG mode
+DEBUG_CFLAGS = -g 
+DEBUG_LDFLAGS = 
+
+#Path to look for included files
+DEBUG_INCLUDE_PATH =
+
+#Application libraries to link with 
+DEBUG_LIBS = 
+
+DEBUG_OBJ_DIR=../obj/Debug
+DEBUG_EXTENSION=.D
+#--------------------------------------------------------------
+
+###############################################################
+###                                                         ###
+###	MODE = RELEASE                                      ###
+###                                                         ###
+###############################################################
+
+RELEASE_PROGRAM = $(addsuffix $(RELEASE_EXTENSION),$(PROGRAM_NAME))
+
+#Compiler and linker flags for RELEASE mode
+RELEASE_CFLAGS = -s -O3 -fexpensive-optimizations
+RELEASE_LDLAGS = 
+
+#Path to look for included files
+RELEASE_INCLUDE_PATH = 
+
+#Application libraries to link with 
+RELEASE_LIBS = 
+			 
+RELEASE_OBJ_DIR =../obj/Release
+RELEASE_EXTENSION=			 
+#-------------------------------------------------------------
+
+#Compiler
+CC = g++
+#Shell
+SHELL = /bin/bash
+
+
+#RELEASE is default mode
+ifneq ($(words $(MODE)),1)
+MODE = RELEASE
+endif
+
+#------------------- Getting source files name --------------
+
+
+src_files = $(foreach dir, $(SRC_DIR), $(notdir $(wildcard $(dir)/*.cpp)))
+SRC_FILES = $(filter-out $(BLACK_LIST),$(src_files))
+sources = $(foreach dir, $(SRC_DIR), $(wildcard $(dir)/*.cpp))#$(wildcard $(SRC_DIR)/*.cpp)
+SOURCES = $(filter-out $(BLACK_LIST),$(sources))
+#Intermediate objects directory and files
+ifeq ($(MODE),RELEASE)
+OBJ_DIR=$(RELEASE_OBJ_DIR)
+else
+OBJ_DIR=$(DEBUG_OBJ_DIR)
+endif
+OBJ_FILES = $(patsubst %.cpp,%.o, $(SRC_FILES))
+OBJECTS = $(patsubst %.cpp,%.o, $(addprefix $(OBJ_DIR)/,$(OBJ_FILES)))
+#--------------------------------------------------------------------------
+
+###---===*** Mode checking and variable assignment ***===---###
+
+
+#DEBUG MODE
+ifeq ($(MODE),DEBUG)
+PROGRAM = $(DEBUG_PROGRAM)
+CFLAGS = $(COMMON_CFLAGS) $(DEBUG_CFLAGS)
+LDFLAGS = $(COMMON_LDFLAGS) $(DEBUG_LDFLAGS)
+
+INCLUDE_PATH = $(COMMON_INCLUDE_PATH) $(DEBUG_INCLUDE_PATH)
+LIBS = $(COMMON_LIBS) $(DEBUG_LIBS)
+
+PROGRAM_EXTENSION=$(DEBUG_EXTENSION)
+endif
+
+#RELEASE MODE
+ifeq ($(MODE),RELEASE)
+PROGRAM = $(RELEASE_PROGRAM)
+CFLAGS = $(COMMON_CFLAGS) $(RELEASE_CFLAGS)
+LDFLAGS = $(COMMON_LDFLAGS) $(RELEASE_LDFLAGS)
+
+INCLUDE_PATH = $(COMMON_INCLUDE_PATH) $(RELEASE_INCLUDE_PATH)
+LIBS = $(COMMON_LIBS) $(RELEASE_LIBS)
+
+PROGRAM_EXTENSION=$(RELEASE_EXTENSION)
+endif
+
+
+
+###---===*** FIN Mode checking and variable assignment ***===---###
+
+###---===***  ---===*** 
+.DEFAULT_GOAL:= build
+.PHONY : build
+build : compile link
+
+.PHONY : all
+all : build
+
+.PHONY : rebuild
+rebuild : clean build
+
+.PHONY : compile
+compile : create_objdir $(OBJ_FILES) 
+
+.PHONY : link
+link : create_bindir link_
+
+
+
+
+.PHONY : clean
+clean :
+	@echo Cleaning $(MODE) files
+	@rm  -rf $(BIN_DIR)/$(PROGRAM)
+	@rm  -rf $(OBJECTS)
+
+.PHONY : cleanall 
+cleanall :
+	@echo Deletting $(BIN_DIR) , $(DEBUG_OBJ_DIR) and $(RELEASE_OBJ_DIR)
+	@rm -rf $(BIN_DIR)
+	@rm -rf $(DEBUG_OBJ_DIR)
+	@rm -rf $(RELEASE_OBJ_DIR)
+###---===*** ***===---
+
+
+###---===*** Utility Targets ***===---
+$(OBJ_FILES) : %.o : %.cpp
+	@echo 
+	@echo --==** Compiling $< **==--
+	$(CC) -c $(CFLAGS) $(INCLUDE_PATH) $^ -o $(OBJ_DIR)/$(@F)
+	@echo --==** Ending compilation  $< **==--
+	@echo
+
+link_ : $(OBJECTS) 
+	@echo 
+	@echo --==** Link $(BIN_DIR)/$(PROGRAM) **==--
+	$(CC) $(LDFLAGS) -o $(BIN_DIR)/$(PROGRAM) $^ $(SYS_LIBS) $(LIBS) $(LIBS)
+	@echo --==** End link $(BIN_DIR)/$(PROGRAM) **==--
+	@echo
+
+
+.PHONY : create_objdir
+create_objdir :
+	@if [[ -e "$(OBJ_DIR)" ]];\
+	then\
+		if [[ -d "$(OBJ_DIR)" ]];\
+		then\
+			echo ;\
+		else\
+			rm -rf "$(OBJ_DIR)";\
+			mkdir -p "$(OBJ_DIR)";\
+		fi;\
+	else\
+		mkdir  -p "$(OBJ_DIR)";\
+	fi;
+
+.PHONY : create_bindir
+create_bindir :
+	@if [[ -e "$(BIN_DIR)" ]];\
+	then\
+		if [[ -d "$(BIN_DIR)" ]];\
+		then\
+			echo ;\
+		else\
+			rm -rf "$(BIN_DIR)";\
+			mkdir -p "$(BIN_DIR)";\
+		fi;\
+	else\
+		echo NO existe $(BIN_DIR);\
+		mkdir  -p "$(BIN_DIR)";\
+	fi;
+
+	
+###---===*** Fin Utility Targets ***===---	
+
+
+#makefile looking for files path configuration
+vpath %.cpp $(SRC_DIR)
+vpath %.o $(OBJ_DIR)
+
+
+
+
+###---===*** Make debug Targets ***===---
+.PHONY : dbg
+dbg :
+ifeq ($(XX),_debug_)
+	@echo Estoy en _debug_
+else
+	@echo NOOO estoy en _debug_
+endif
+	@echo CC $(CC)
+	@echo CFLAGS $(CFLAGS)
+	@echo LIBS $(LIBS)
+	@echo INCLUDE_PATH $(INCLUDE_PATH)
+	@echo PROGRAM $(PROGRAM)
+	@echo
+	@echo SRC_FILES $(SRC_FILES)
+	@echo SOURCES $(SOURCES)
+	@echo OBJ_FILES $(OBJ_FILES)
+	@echo OBJECTS $(OBJECTS)
+	@echo BLACK_LIST $(BLACK_LIST)
+	@echo src_files $(src_files)
+	@echo MODE = $(MODE)
+	@echo MAKEFLAGS = $(MAKEFLAGS)
+	@echo MAKEFILES = $(MAKEFILES)
+	@echo MAKEFILE_LIST = $(MAKEFILE_LIST)
+	@echo CURDIR = $(CURDIR)
+	@echo DEPENDS = $(DEPENDS)
+	@echo lib_deps = $(lib_deps)
+	@echo LIB_DEPS = $(LIB_DEPS)
+	@echo mod_deps = $(mod_deps)
+	@echo MOD_DEPS = $(MOD_DEPS)
+	@echo tonteria = $(tonteria)
+	@echo tonteria1 = $(tonteria1)
+	@echo
+	@echo SRC_DIR = $(SRC_DIR)
+	@echo src_files = $(src_files)
+	@echo SRC_FILES = $(SRC_FILES)
+	@echo sources = $(sources)
+	@echo SOURCES = $(SOURCES)
+	@echo OBJ_DIR = $(OBJ_DIR)
+	@echo OBJ_FILES = $(OBJ_FILES)
+	@echo OBJECTS = $(OBJECTS)	
+	@echo
+	@echo _src_files = $(_src_files)
+	@echo _obj_files = $(_obj_files)
+	@echo _obj_files1 = $(_obj_files1)
+.PHONY : dbg1
+dbg1 : $(OBJECTS)
+###---===*** Fin Make debug Targets ***===---
+
+
+
+
+
