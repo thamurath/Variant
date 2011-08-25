@@ -53,12 +53,12 @@ namespace Utilities
         CreateVTable<Visitor,VisitedList,Invoker>  GetStaticVtable<Visitor,VisitedList,Invoker>::s_vtable;
 
         //global helper function
-        template <typename Visitor, typename VisitedList, typename Invoker>
-        void visits(Visitor& ai_visitor, const VisitedList&, const Invoker&)
-        {
-          //instanciar la variable statica vtable y hacer el set del puntero a vtable
-          ai_visitor.m_vtable = GetStaticVtable<Visitor,VisitedList, Invoker>();
-        }
+//        template <typename Visitor, typename VisitedList, typename Invoker>
+//        void visits(Visitor& ai_visitor, const VisitedList&, const Invoker&)
+//        {
+//          //instanciar la variable statica vtable y hacer el set del puntero a vtable
+//          ai_visitor.m_vtable = GetStaticVtable<Visitor,VisitedList, Invoker>();
+//        }
       }
     }
   }

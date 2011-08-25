@@ -29,8 +29,8 @@ namespace Utilities
       public:
         typedef Base Base_t;
 
-	Visitor(void){}
-	virtual ~Visitor(void){}
+        Visitor(void){}
+        virtual ~Visitor(void){}
 
         template <typename VisitorImpl, typename Visitable,typename Invoker>
         ReturnType Thunk (Base& b)
@@ -39,7 +39,7 @@ namespace Utilities
           Visitable& visitable = static_cast<Visitable&>(b);
 
           ///@todo solve problems with void and return clause
-          /*return */ Invoker::Invoke(visitor, visitable);
+          return  Invoker::Invoke(visitor, visitable);
         }
 
 
@@ -56,10 +56,18 @@ namespace Utilities
         typedef internal::VTable<const Base, Func_t> VTable_t;
         const VTable_t* m_vtable;
 
+        //global helper function
+        ///@note call this methos before any visitation
+        template <typename Visitor, typename VisitedList, typename Invoker>
+        void CreateVirtualTable(Visitor& ai_visitor, const VisitedList&, const Invoker&)
+        {
+          //instanciar la variable statica vtable y hacer el set del puntero a vtable
+          ai_visitor.m_vtable = internal::GetStaticVtable<Visitor,VisitedList, Invoker>();
+        }
       private:
 
-	Visitor(const Visitor& rhs);
-	Visitor& operator=(const Visitor& rhs);
+        Visitor(const Visitor& rhs);
+        Visitor& operator=(const Visitor& rhs);
 
       };
     }

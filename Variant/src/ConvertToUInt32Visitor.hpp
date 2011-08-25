@@ -19,7 +19,7 @@ namespace Utilities
 
 
     class ConvertToUInt32Visitor : public ConvertVisitor,
-                                    public Utilities::DesignPatterns::CooperativeVisitor < VariantTypeBase,uint32_t>
+                                    public Utilities::DesignPatterns::CooperativeVisitor::Visitor < VariantTypeBase,uint32_t>
     {
     private:
 
@@ -31,7 +31,7 @@ namespace Utilities
       ConvertToUInt32Visitor(void)
       {
         // creates the "vtable" to be able to visit all types included in VisitedTypes_t list
-        visits(*this,VisitedTypes_t(),ConvertToUInt32Invoker());
+        CreateVirtualTable(*this,VisitedTypes_t(),ConvertToUInt32Invoker());
       }
 
       //visit methods

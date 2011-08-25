@@ -78,6 +78,34 @@ namespace Utilities
         }
       };
 
+      class ConvertException : public VariantExecption
+      {
+      protected:
+        ConvertException(const Utilities::String& ai_what)
+          : VariantExecption(ai_what)
+        {
+
+        }
+        virtual ~ConvertException(void) throw()
+        {
+
+        }
+      };
+
+      class TruncatedValueException : public ConvertException
+      {
+      protected:
+        TruncatedValueException(void)
+          : ConvertException("Unable to convert data, destination type is not big enough")
+        {
+
+        }
+        virtual ~TruncatedValueException(void) throw()
+        {
+
+        }
+      };
+
     }
   }
 }

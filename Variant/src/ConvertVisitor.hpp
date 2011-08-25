@@ -14,13 +14,6 @@ namespace Utilities
         //nothing to do
       }
 
-
-      template <typename Visitor, typename VisitedList, typename Invoket>
-      void visits(Visitor& ai_visitor, const VisitedList&, const Invoker&)
-      {
-        ai_visitor.m_table = GetStaticVtable<Visitor,VisitedList,Invoker>();
-      }
-
       void operator()(void)
       {
         throw std::exception("ConvertVisitor::operator() ");
