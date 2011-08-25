@@ -35,13 +35,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="..\..\Variant" />
-			<Add directory="..\src" />
-			<Add directory="..\..\..\Variant" />
+			<Add directory=".." />
+			<Add directory="..\.." />
 		</Compiler>
 		<Unit filename="..\Variant.hpp" />
 		<Unit filename="..\VariantExceptions.hpp" />
+		<Unit filename="..\src\ConvertToUInt32Visitor.cpp" />
 		<Unit filename="..\src\ConvertToUInt32Visitor.hpp" />
+		<Unit filename="..\src\ConvertToUInt64Visitor.cpp" />
 		<Unit filename="..\src\ConvertToUInt64Visitor.hpp" />
 		<Unit filename="..\src\ConvertVisitor.hpp" />
 		<Unit filename="..\src\Variant.cpp" />
