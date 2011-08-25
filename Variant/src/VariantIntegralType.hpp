@@ -1,7 +1,7 @@
 #ifndef __UTILITIES_VARIANT_INTERNAL_VARIANTINTEGRALTYPE_HPP__
 #define __UTILITIES_VARIANT_INTERNAL_VARIANTINTEGRALTYPE_HPP__
 
-#include "VariantTypeBase.hpp"
+#include "src/VariantTypeBase.hpp"
 namespace Utilities
 {
   namespace Variant

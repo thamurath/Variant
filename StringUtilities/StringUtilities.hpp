@@ -2,8 +2,9 @@
 #define ___UTILITIES_STRINGUTILITIES_H__
 
 
+#include "src/StringToIntegerFunctionGeneratorMacros.hpp"
+
 #include "String.hpp"
-#include "StringToIntegerFunctionGeneratorMacros.hpp"
 
 #include <cstdio>
 #include <cstring>

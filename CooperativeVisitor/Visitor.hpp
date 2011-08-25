@@ -4,9 +4,11 @@
 
 ///@todo Maybe this Invoker.hpp file should be in the src folder and be implicitly included by Visitor.hpp
 /// so the user has just to include Visitor.hpp
+#include "src/VTable.hpp"
+
 #include "Invoker.hpp"
 
-#include "src/VTable.hpp"
+
 
 
 namespace Utilities

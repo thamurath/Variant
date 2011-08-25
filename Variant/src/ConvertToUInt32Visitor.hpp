@@ -1,7 +1,7 @@
 #ifndef __UTILITIES_VARIANT_CONVERTTOUINT32VISITOR_HPP_INCLUDED__
 #define __UTILITIES_VARIANT_CONVERTTOUINT32VISITOR_HPP_INCLUDED__
 
-#include "ConvertVisitor.hpp"
+#include "src/ConvertVisitor.hpp"
 
 #include <CooperativeVisitor/Visitor.hpp>
 #include <TypeLists/TypeList.hpp>

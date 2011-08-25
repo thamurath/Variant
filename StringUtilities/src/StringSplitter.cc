@@ -1,4 +1,4 @@
-#include "StringSplitter.hpp"
+#include "src/StringSplitter.hpp"
 
 #include <string.h>
 #include <stdint.h>

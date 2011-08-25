@@ -1,8 +1,8 @@
 #ifndef __UTILITIES_DESIGNPATTERNS_COOPERATIVEVISITOR_VTABLE_CREATOR_HPP__
 #define __UTILITIES_DESIGNPATTERNS_COOPERATIVEVISITOR_VTABLE_CREATOR_HPP__
 
-#include "VTable.hpp"
-#include "TypeLists/TypeListAlgorithms.hpp"
+#include "src/VTable.hpp"
+#include <TypeLists/TypeListAlgorithms.hpp>
 
 
 namespace Utilities

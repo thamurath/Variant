@@ -4,12 +4,14 @@
 
 
 
-#include "VariantTypeBase.hpp"
+#include "src/VariantTypeBase.hpp"
+#include "src/VariantTypeUInt32.hpp"
 
-#include "VariantTypeUInt32.hpp"
 #include "VariantExceptions.hpp"
 
 #include <TypeLists/TypeList.hpp>
+
+
 #include <memory>
 #include <cstdio>
 
