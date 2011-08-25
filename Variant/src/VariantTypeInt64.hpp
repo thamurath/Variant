@@ -7,7 +7,7 @@ namespace Utilities
 {
   namespace Variant
   {
-    namespce internal
+    namespace internal
     {
       class VariantTypeInt64 : public VariantTypeBase
       {

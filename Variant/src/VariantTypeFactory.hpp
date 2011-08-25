@@ -4,7 +4,7 @@
 
 
 
-#include "VariantType.hpp"
+#include "VariantTypeBase.hpp"
 
 #include "VariantTypeUInt32.hpp"
 #include "VariantExceptions.hpp"
@@ -29,13 +29,14 @@ namespace Utilities
         // use the IndexOf typelist capability to get the correct index of each type.
         typedef TYPELIST_2(uint32_t,int64_t) SupportedTypes;
 
+        typedef uint32_t TableIndex_t;
         // Container
-        typedef std::map<int,boost::shared_ptr<ConvertVisitor> > ConverterTable_t;
+        typedef std::map<TableIndex_t,boost::shared_ptr<ConvertVisitor> > ConverterTable_t;
         ConverterTable_t m_visitorTable;
 
       public:
         template<typename CreateType>
-        static VariantType* Create(const CreateType& ai_value)
+        static VariantTypeBase* Create(const CreateType& ai_value)
         {
           return Create(ai_value,Utilities::TypeLists::Type2Type<CreateType>());
         }
@@ -43,7 +44,7 @@ namespace Utilities
         template<typename ToType>
         static ConvertVisitor& GetVisitor(ToType& ao_value)
         {
-          const int index = Utilities::TypeLists::IndexOf<SupportedTypes,ToType>::value;
+          const TableIndex_t index = Utilities::TypeLists::IndexOf<SupportedTypes,ToType>::value;
 
           ///@note See Effective STL Item 24 for reference
 
