@@ -3,8 +3,8 @@
 	<Workspace title="Variant">
 		<Project filename="../TypeLists/project/TypeLists.cbp" />
 		<Project filename="../Common/project/Common.cbp" />
-		<Project filename="../Variant/project/Variant.cbp" active="1" />
 		<Project filename="../CompileTimeTools/project/CompileTimeTools.cbp" />
+		<Project filename="../Variant/project/Variant.cbp" active="1" />
 		<Project filename="../StringUtilities/project/StringUtilities.cbp" />
 		<Project filename="../CooperativeVisitor/project/CooperativeVisitor.cbp" />
 	</Workspace>
