@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_workspace_file>
-	<Workspace title="Variant">
-		<Project filename="../TypeLists/project/TypeLists.cbp" />
+	<Workspace title="Workspace">
+		<Project filename="../Variant/project/Variant.cbp">
+			<Depends filename="../StringUtilities/project/StringUtilities.cbp" />
+			<Depends filename="../CooperativeVisitor/project/CooperativeVisitor.cbp" />
+			<Depends filename="../TypeLists/project/TypeLists.cbp" />
+			<Depends filename="../Common/project/Common.cbp" />
+			<Depends filename="../CompileTimeTools/project/CompileTimeTools.cbp" />
+		</Project>
+		<Project filename="../StringUtilities/project/StringUtilities.cbp">
+			<Depends filename="../Common/project/Common.cbp" />
+		</Project>
+		<Project filename="../CooperativeVisitor/project/CooperativeVisitor.cbp">
+			<Depends filename="../TypeLists/project/TypeLists.cbp" />
+			<Depends filename="../Common/project/Common.cbp" />
+		</Project>
+		<Project filename="../VariantTest/project/VariantTest.cbp" active="1">
+			<Depends filename="../Variant/project/Variant.cbp" />
+		</Project>
+		<Project filename="../TypeLists/project/TypeLists.cbp">
+			<Depends filename="../Common/project/Common.cbp" />
+		</Project>
 		<Project filename="../Common/project/Common.cbp" />
-		<Project filename="../CompileTimeTools/project/CompileTimeTools.cbp" />
-		<Project filename="../Variant/project/Variant.cbp" />
-		<Project filename="../StringUtilities/project/StringUtilities.cbp" />
-		<Project filename="../CooperativeVisitor/project/CooperativeVisitor.cbp" />
-		<Project filename="../VariantTest/project/VariantTest.cbp" active="1" />
+		<Project filename="../CompileTimeTools/project/CompileTimeTools.cbp">
+			<Depends filename="../TypeLists/project/TypeLists.cbp" />
+			<Depends filename="../Common/project/Common.cbp" />
+		</Project>
 	</Workspace>
 </CodeBlocks_workspace_file>

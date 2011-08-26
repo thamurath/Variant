@@ -7,9 +7,9 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="..\bin\Debug\libVariant" prefix_auto="1" extension_auto="1" />
+				<Option output="../bin/Debug/libVariant" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
-				<Option object_output="..\obj\Debug\" />
+				<Option object_output="../obj/Debug/" />
 				<Option type="2" />
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
@@ -18,9 +18,9 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="..\bin\Release\libVariant" prefix_auto="1" extension_auto="1" />
+				<Option output="../bin/Release/libVariant" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
-				<Option object_output="..\obj\Release\" />
+				<Option object_output="../obj/Release/" />
 				<Option type="2" />
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
@@ -36,29 +36,29 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add directory=".." />
-			<Add directory="..\.." />
+			<Add directory="../.." />
 		</Compiler>
-		<Unit filename="..\Variant.hpp" />
-		<Unit filename="..\VariantExceptions.hpp" />
-		<Unit filename="..\src\ConvertToUInt32Visitor.cpp" />
-		<Unit filename="..\src\ConvertToUInt32Visitor.hpp" />
-		<Unit filename="..\src\ConvertToUInt64Visitor.cpp" />
-		<Unit filename="..\src\ConvertToUInt64Visitor.hpp" />
-		<Unit filename="..\src\ConvertVisitor.hpp" />
-		<Unit filename="..\src\Variant.cpp" />
-		<Unit filename="..\src\VariantIntegralType.hpp" />
-		<Unit filename="..\src\VariantTypeBase.hpp" />
-		<Unit filename="..\src\VariantTypeFactory.hpp" />
-		<Unit filename="..\src\VariantTypeInt16.hpp" />
-		<Unit filename="..\src\VariantTypeInt32.hpp" />
-		<Unit filename="..\src\VariantTypeInt64.hpp" />
-		<Unit filename="..\src\VariantTypeInt8.hpp" />
-		<Unit filename="..\src\VariantTypeUInt16.hpp" />
-		<Unit filename="..\src\VariantTypeUInt32.cpp" />
-		<Unit filename="..\src\VariantTypeUInt32.hpp" />
-		<Unit filename="..\src\VariantTypeUInt64.cpp" />
-		<Unit filename="..\src\VariantTypeUInt64.hpp" />
-		<Unit filename="..\src\VariantTypeUInt8.hpp" />
+		<Unit filename="../Variant.hpp" />
+		<Unit filename="../VariantExceptions.hpp" />
+		<Unit filename="../src/ConvertToUInt32Visitor.cpp" />
+		<Unit filename="../src/ConvertToUInt32Visitor.hpp" />
+		<Unit filename="../src/ConvertToUInt64Visitor.cpp" />
+		<Unit filename="../src/ConvertToUInt64Visitor.hpp" />
+		<Unit filename="../src/ConvertVisitor.hpp" />
+		<Unit filename="../src/Variant.cpp" />
+		<Unit filename="../src/VariantIntegralType.hpp" />
+		<Unit filename="../src/VariantTypeBase.hpp" />
+		<Unit filename="../src/VariantTypeFactory.hpp" />
+		<Unit filename="../src/VariantTypeInt16.hpp" />
+		<Unit filename="../src/VariantTypeInt32.hpp" />
+		<Unit filename="../src/VariantTypeInt64.hpp" />
+		<Unit filename="../src/VariantTypeInt8.hpp" />
+		<Unit filename="../src/VariantTypeUInt16.hpp" />
+		<Unit filename="../src/VariantTypeUInt32.cpp" />
+		<Unit filename="../src/VariantTypeUInt32.hpp" />
+		<Unit filename="../src/VariantTypeUInt64.cpp" />
+		<Unit filename="../src/VariantTypeUInt64.hpp" />
+		<Unit filename="../src/VariantTypeUInt8.hpp" />
 		<Extensions>
 			<DoxyBlocks>
 				<comment_style block="0" line="0" />
