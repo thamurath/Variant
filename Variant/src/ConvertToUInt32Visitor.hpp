@@ -3,6 +3,7 @@
 
 #include "src/ConvertVisitor.hpp"
 
+
 #include <CooperativeVisitor/Visitor.hpp>
 #include <TypeLists/TypeList.hpp>
 
@@ -12,6 +13,7 @@ namespace Utilities
   {
     namespace internal
     {
+      class VariantTypeBase;
       class VariantTypeUInt32;
       class VariantTypeUInt64;
     }
@@ -19,7 +21,7 @@ namespace Utilities
 
 
     class ConvertToUInt32Visitor : public ConvertVisitor,
-                                    public Utilities::DesignPatterns::CooperativeVisitor::Visitor < VariantTypeBase,uint32_t>
+                                    public Utilities::DesignPatterns::CooperativeVisitor::Visitor < internal::VariantTypeBase,uint32_t>
     {
     private:
 

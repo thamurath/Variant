@@ -1,7 +1,7 @@
 #include "String.hpp"
 
 
-#include <Common/Nullprt.hpp>
+#include <Common/Nullptr.hpp>
 #include <Common/Swapper.hpp>
 
 #include <string.h>
@@ -278,7 +278,7 @@ namespace Utilities
     }
   }
 
-  inline void String::swap(String& aio_right)
+  inline void String::swap(String& aio_right) throw()
   {
     Swapper::swap(m_strLength,aio_right.m_strLength);
     Swapper::swap(m_bufferSize,aio_right.m_bufferSize);

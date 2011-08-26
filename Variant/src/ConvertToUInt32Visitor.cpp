@@ -5,8 +5,8 @@
 #include "src/VariantTypeUInt32.hpp"
 #include "src/VariantTypeUInt64.hpp"
 
-#include <stdint>
-
+//#include <inttypes.h>
+#include <limits>
 namespace Utilities
 {
   namespace Variant
@@ -18,10 +18,11 @@ namespace Utilities
 
     uint32_t ConvertToUInt32Visitor::Convert(internal::VariantTypeUInt64& ai_data)
     {
-      if ( UINT32_MAX < ai_data.GetValue())
+      if ( std::numeric_limits<uint32_t>::max() < ai_data.GetValue() )
+      //if ( UINT32_MAX < ai_data.GetValue())
       {
         //ERROR Truncated value
-        throw Exceptions::TruncatedValue();
+        throw Exceptions::TruncatedValueException();
       }
       else
       {

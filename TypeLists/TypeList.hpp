@@ -38,7 +38,7 @@ namespace Utilities
     };
 
     /// Overload when the type to look for is the first one in the list
-    template <typename Tail, Typename T>
+    template <typename Tail, typename T>
     struct IndexOf<TypeList<T,Tail>,T>
     {
       enum {value = 0};

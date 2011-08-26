@@ -9,7 +9,7 @@ namespace Utilities
   {
     namespace internal
     {
-      class VariantTypeUInt32 : public VariantTypeBaseClonable
+      class VariantTypeUInt32 : public VariantTypeBaseClonable <VariantTypeUInt32>
       {
       public:
         VariantTypeUInt32(const uint32_t& ai_value=0);

@@ -10,7 +10,7 @@ namespace Utilities
   {
     namespace Exceptions
     {
-      class VariantExecption : public std::exception
+      class VariantException : public std::exception
       {
       public:
 
@@ -20,11 +20,11 @@ namespace Utilities
          *    of the current error.  */
         virtual const char* what() const throw()
         {
-          return m_what.c_str();
+          return m_what.getCharString();
         }
 
       protected:
-        VariantException(const Utilities:::String& ai_what) throw()
+        VariantException(const Utilities::String& ai_what) throw()
           : m_what(ai_what)
         {
 
@@ -36,11 +36,11 @@ namespace Utilities
 
       };
 
-      class UnableToConvertData : public VariantExecption
+      class UnableToConvertData : public VariantException
       {
       public:
         UnableToConvertData(void)
-          : VariantExecption("Unable to find converter for specified type")
+          : VariantException("Unable to find converter for specified type")
         {
 
         }
@@ -50,25 +50,25 @@ namespace Utilities
         }
       };
 
-      class UnableToInsertInContainer : public VariantExecption
+      class UnableToInsertInContainer : public VariantException
       {
       public:
-        VariantUnableToInsertInContainer(void)
-          : VariantExecption("Unexpected Error while inserting in the container")
+        UnableToInsertInContainer(void)
+          : VariantException("Unexpected Error while inserting in the container")
         {
 
         }
-        virtual ~VariantUnableToInsertInContainer(void) throw ()
+        virtual ~UnableToInsertInContainer(void) throw ()
         {
 
         }
       };
 
-      class NonExistingVariantType : public VariantExecption
+      class NonExistingVariantType : public VariantException
       {
       public:
         NonExistingVariantType(void)
-          : VariantExecption("Unable to find a variant type")
+          : VariantException("Unable to find a variant type")
         {
 
         }
@@ -78,11 +78,11 @@ namespace Utilities
         }
       };
 
-      class ConvertException : public VariantExecption
+      class ConvertException : public VariantException
       {
-      protected:
+      public:
         ConvertException(const Utilities::String& ai_what)
-          : VariantExecption(ai_what)
+          : VariantException(ai_what)
         {
 
         }
@@ -94,7 +94,7 @@ namespace Utilities
 
       class TruncatedValueException : public ConvertException
       {
-      protected:
+      public:
         TruncatedValueException(void)
           : ConvertException("Unable to convert data, destination type is not big enough")
         {

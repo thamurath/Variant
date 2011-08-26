@@ -6,6 +6,7 @@
 /// so the user has just to include Visitor.hpp
 #include "src/VTable.hpp"
 
+#include "src/VTableCreator.hpp"
 #include "Invoker.hpp"
 
 
@@ -62,7 +63,8 @@ namespace Utilities
         void CreateVirtualTable(Visitor& ai_visitor, const VisitedList&, const Invoker&)
         {
           //instanciar la variable statica vtable y hacer el set del puntero a vtable
-          ai_visitor.m_vtable = internal::GetStaticVtable<Visitor,VisitedList, Invoker>();
+          ai_visitor.m_vtable = Utilities::DesignPatterns::CooperativeVisitor::internal::GetStaticVtable<Visitor,VisitedList, Invoker>();
+          //ai_visitor.m_vtable = internal::GetStaticVtable<Visitor,VisitedList, Invoker>();
         }
       private:
 

@@ -35,7 +35,7 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add directory=".." />
+			<Add directory="../" />
 			<Add directory="../.." />
 		</Compiler>
 		<Unit filename="../Invoker.hpp" />

@@ -1,7 +1,7 @@
 #ifndef __UTILITIES_DESIGNPATTERNS_COOPERATIVEVISITOR_INTERNAL_VTABLE_HPP__
 #define __UTILITIES_DESIGNPATTERNS_COOPERATIVEVISITOR_INTERNAL_VTABLE_HPP__
 
-#include "src/Tags.hpp"
+#include "Tags.hpp"
 
 #include <vector>
 #include <iostream>

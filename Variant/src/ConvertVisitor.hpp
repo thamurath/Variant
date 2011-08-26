@@ -1,7 +1,8 @@
 #ifndef __UTILITIES_VARIANT_CONVERTVISITOR_HPP_INCLUDED__
 #define __UTILITIES_VARIANT_CONVERTVISITOR_HPP_INCLUDED__
 
-#include <exception>
+#include "VariantExceptions.hpp"
+
 namespace Utilities
 {
   namespace Variant
@@ -16,7 +17,7 @@ namespace Utilities
 
       void operator()(void)
       {
-        throw std::exception("ConvertVisitor::operator() ");
+        throw Exceptions::ConvertException("ConvertVisitor::operator() ");
       }
     protected:
     };

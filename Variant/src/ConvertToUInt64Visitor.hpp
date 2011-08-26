@@ -19,7 +19,7 @@ namespace Utilities
 
 
     class ConvertToUInt64Visitor : public ConvertVisitor,
-                                    public Utilities::DesignPatterns::CooperativeVisitor::Visitor < VariantTypeBase,uint64_t>
+                                    public Utilities::DesignPatterns::CooperativeVisitor::Visitor < internal::VariantTypeBase,uint64_t>
     {
     private:
 

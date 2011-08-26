@@ -42,7 +42,10 @@
 		<Unit filename="../StringSplitter.hpp" />
 		<Unit filename="../StringUtilities.hpp" />
 		<Unit filename="../src/String.cc" />
-		<Unit filename="../src/StringSplitter.cc" />
+		<Unit filename="../src/StringSplitter.cc">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
 		<Unit filename="../src/StringToIntegerFunctionGeneratorMacros.h" />
 		<Extensions>
 			<code_completion />

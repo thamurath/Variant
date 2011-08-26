@@ -2,7 +2,7 @@
 #define __UTILITIES_STRINGSPLITTER_HPP__
 
 
-
+#include <Common/DataTypes.hpp>
 
 #include <stdint.h>
 
