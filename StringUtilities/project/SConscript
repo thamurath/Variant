@@ -1,0 +1,21 @@
+import os
+
+
+env = Environment ( ENV = os.environ )
+
+env.Append(PROJECT_HOME = '..' )
+env.Append(SOLUTION_HOME = '../..' )# Este valor deberia venir en el environment desde el SConstruct general
+env.Append(LIB_INSTALL_PATH = env['SOLUTION_HOME'] + '/lib' ) 
+
+#print ('project home ' , env['PROJECT_HOME'])
+
+env.Append(CPPPATH = [env['PROJECT_HOME'] , env['SOLUTION_HOME'] ])
+print ('CPPPATH ' , env['CPPPATH'])
+
+
+
+
+#env.VariantDir('../build-release', '../src')
+source_files = Glob('../src/*.cc')
+#env.StaticLibrary( 'StringUtilities',source_files,variant_dir = '../build-release')
+env.StaticLibrary( 'StringUtilities',source_files,variant_dir = '../build-release')
