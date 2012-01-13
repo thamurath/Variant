@@ -1,2 +1,3 @@
 #SConstruct
-SConscript('SConscript',variant_dir='../build-release',src='../src')
+SConscript('SConscript')
+#SConscript('SConscript',variant_dir='../build-release',src='../src')
