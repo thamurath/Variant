@@ -4,9 +4,9 @@
 
 ///@todo Maybe this Invoker.hpp file should be in the src folder and be implicitly included by Visitor.hpp
 /// so the user has just to include Visitor.hpp
-#include "src/VTable.hpp"
+#include "VTable.hpp"//#include "src/VTable.hpp"
 
-#include "src/VTableCreator.hpp"
+#include "VTableCreator.hpp"//#include "src/VTableCreator.hpp"
 #include "Invoker.hpp"
 
 
@@ -40,7 +40,7 @@ namespace Utilities
           Visitable& visitable = static_cast<Visitable&>(b);
 
           ///@todo solve problems with void and return clause
-          return  Invoker::Invoke(visitor, visitable);
+           Invoker::Invoke(visitor, visitable);//return  Invoker::Invoke(visitor, visitable);
         }
 
 

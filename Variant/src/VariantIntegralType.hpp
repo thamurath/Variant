@@ -1,7 +1,7 @@
 #ifndef __UTILITIES_VARIANT_INTERNAL_VARIANTINTEGRALTYPE_HPP__
 #define __UTILITIES_VARIANT_INTERNAL_VARIANTINTEGRALTYPE_HPP__
 
-#include "src/VariantTypeBase.hpp"
+#include "VariantTypeBase.hpp"//#include "src/VariantTypeBase.hpp"
 namespace Utilities
 {
   namespace Variant
@@ -9,7 +9,7 @@ namespace Utilities
     namespce internal
     {
       template <typename T>
-      class VariantIntegralType : public VariantTypeBaseClonable
+      class VariantIntegralType : public VariantTypeBase
       {
       public:
         VariantIntegralType(const T& ai_value=T());

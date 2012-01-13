@@ -2,7 +2,7 @@
 #define __UTILITIES_VARIANT_INTERNAL_VARIANTINT8_HPP__
 
 
-#include "src/VariantTypeBase.hpp"
+#include "VariantTypeBase.hpp"//#include "src/VariantTypeBase.hpp"
 
 namespace Utilities
 {
@@ -10,7 +10,7 @@ namespace Utilities
   {
     namespace internal
     {
-      class VariantTypeInt8 : public VariantTypeBaseClonable
+      class VariantTypeInt8 : public VariantTypeBase
       {
       public:
         VariantTypeInt8(const int8_t& ai_value=0);

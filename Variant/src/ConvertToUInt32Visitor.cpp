@@ -1,10 +1,11 @@
 #include "VariantExceptions.hpp"
 
-#include "src/ConvertToUInt32Visitor.hpp"
+#include "ConvertToUInt32Visitor.hpp"
 
-#include "src/VariantTypeUInt32.hpp"
-#include "src/VariantTypeUInt64.hpp"
+#include "VariantTypeUInt32.hpp"
+#include "VariantTypeUInt64.hpp"
 
+#include <stdint.h>
 //#include <inttypes.h>
 #include <limits>
 namespace Utilities
@@ -13,7 +14,7 @@ namespace Utilities
   {
     uint32_t ConvertToUInt32Visitor::Convert(internal::VariantTypeUInt32& ai_data)
     {
-      return ai_data.GetValue();
+       ai_data.GetValue();
     }
 
     uint32_t ConvertToUInt32Visitor::Convert(internal::VariantTypeUInt64& ai_data)
@@ -26,7 +27,7 @@ namespace Utilities
       }
       else
       {
-        return static_cast<uint32_t>(ai_data.GetValue());
+         static_cast<uint32_t>(ai_data.GetValue());
       }
     }
   }

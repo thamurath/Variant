@@ -2,7 +2,7 @@
 #define ___UTILITIES_STRINGUTILITIES_H__
 
 
-#include "src/StringToIntegerFunctionGeneratorMacros.hpp"
+#include "StringToIntegerFunctionGeneratorMacros.hpp"//#include "src/StringToIntegerFunctionGeneratorMacros.hpp"
 
 #include "String.hpp"
 

@@ -2,14 +2,14 @@
 #define __UTILITIES_VARIANT_INTERNAL_VARIANTINT32_HPP__
 
 
-#include "src/VariantTypeBase.hpp"
+#include "VariantTypeBase.hpp"//#include "src/VariantTypeBase.hpp"
 namespace Utilities
 {
   namespace Variant
   {
     namespace internal
     {
-      class VariantTypeInt32 : public VariantTypeBaseClonable
+      class VariantTypeInt32 : public VariantTypeBase
       {
       public:
         VariantTypeInt32(const int32_t& ai_value=0);

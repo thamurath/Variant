@@ -1,20 +1,25 @@
 #ifndef __UTILITIES_VARIANT_CONVERTTOUINT64VISITOR_HPP_INCLUDED__
 #define __UTILITIES_VARIANT_CONVERTTOUINT64VISITOR_HPP_INCLUDED__
 
-#include "src/ConvertVisitor.hpp"
+#include "ConvertVisitor.hpp"//#include "src/ConvertVisitor.hpp"
 
 #include <CooperativeVisitor/Visitor.hpp>
 #include <TypeLists/TypeList.hpp>
+
+#include "VariantTypeBase.hpp"
+#include "VariantTypeUInt32.hpp"
+#include "VariantTypeUInt64.hpp"
 
 namespace Utilities
 {
   namespace Variant
   {
-    namespace internal
-    {
-      class VariantTypeUInt32;
-      class VariantTypeUInt64;
-    }
+    // namespace internal
+    // {
+    //   class VariantTypeBase;
+    //   class VariantTypeUInt32;
+    //   class VariantTypeUInt64;
+    // }
 
 
 
@@ -31,7 +36,7 @@ namespace Utilities
       ConvertToUInt64Visitor(void)
       {
         // creates the "vtable" to be able to visit all types included in VisitedTypes_t list
-        visits(*this,VisitedTypes_t(),ConvertToUInt64Invoker());
+        CreateVirtualTable(*this,VisitedTypes_t(),ConvertToUInt64Invoker());
       }
 
       //visit methods

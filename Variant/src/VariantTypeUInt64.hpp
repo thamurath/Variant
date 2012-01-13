@@ -2,14 +2,14 @@
 #define __UTILITIES_VARIANT_INTERNAL_VARIANTUINT64_HPP__
 
 
-#include "src/VariantTypeBase.hpp"
+#include "VariantTypeBase.hpp"//#include "src/VariantTypeBase.hpp"
 namespace Utilities
 {
   namespace Variant
   {
     namespace internal
     {
-      class VariantTypeUInt64 : public VariantTypeBaseClonable <VariantTypeUInt64>
+      class VariantTypeUInt64 : public VariantTypeBase
       {
       public:
         VariantTypeUInt64(const uint64_t& ai_value=0);

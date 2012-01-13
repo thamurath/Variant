@@ -1,3 +1,17 @@
 #SConstruct
+
+import os
+
+env = Environment ( ENV = os.environ )
+env.Decider('MD5-timestamp')
+
+env.Append(PROJECT_HOME = '..' )
+env.Append(SOLUTION_HOME = '../..' )# Este valor deberia venir en el environment desde el SConstruct general
+env.Append(LIB_INSTALL_PATH = env['SOLUTION_HOME'] + '/lib' ) 
+env.Append(CPPPATH = [env['PROJECT_HOME'] , env['SOLUTION_HOME'] ])
+
+Export('env')
+
+VariantDir('../build-release','../src',duplicate= False)
 SConscript('SConscript')
 #SConscript('SConscript',variant_dir='../build-release',src='../src')
